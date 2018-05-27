@@ -1,9 +1,8 @@
 FROM rocker/r-base:latest
 
 RUN Rscript -e "install.packages('Rserve',repos='https://cran.ism.ac.jp/')" && \
-Rscript -e '.libPaths("./opt/r/lib")'
-
-RUN mkdir -p /opt/r/workdir
+Rscript -e '.libPaths("./opt/r/lib")' && \
+mkdir -p /opt/r/workdir
 
 COPY /conf/Rserv.conf /opt/r/
 COPY /conf/user.txt /opt/r/
