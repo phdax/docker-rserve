@@ -3,17 +3,10 @@ FROM rocker/r-base:latest
 RUN Rscript -e "install.packages('Rserve',repos='https://cran.ism.ac.jp/')" && \
 Rscript -e '.libPaths("./opt/r/lib")'
 
-RUN mkdir -p /opt/r/workdir && \
-cat <<EOS > /opt/r/user.txt && \
-admin admin \
-EOS \
-cat <<EOS > /opt/r/Rserv.conf \
-remote enable \
-workdir /opt/r/workdir \
-pwdfile /opt/r/user.txt \
-auth required \
-port 6312 \
-EOS
+RUN mkdir -p /opt/r/workdir
+
+COPY /conf/Rserv.conf /opt/r/
+COPY /conf/user.txt /opt/r/
 
 ENV R_LIBS="/opt/r/lib"
 
