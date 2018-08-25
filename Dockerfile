@@ -1,8 +1,13 @@
 FROM rocker/r-base:latest
 
-RUN Rscript -e "install.packages('Rserve',repos='https://cran.ism.ac.jp/')" && \
-Rscript -e '.libPaths("./opt/r/lib")' && \
-mkdir -p /opt/r/work
+LABEL org.label-schema.license="GPL-2.0" \
+      org.label-schema.vcs-url="https://github.com/phdax/docker-rserve" \
+      org.label-schema.vendor="" \
+      maintainer="phdax <pophitdax@gmail.com>"
+
+RUN Rscript -e "install.packages('Rserve',repos='https://cran.ism.ac.jp/')" \
+&& Rscript -e '.libPaths("./opt/r/lib")' \
+&& mkdir -p /opt/r/work
 
 COPY /conf/Rserv.conf /opt/r/
 COPY /conf/user.txt /opt/r/

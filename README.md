@@ -1,6 +1,8 @@
 docker-rserve
 =============
 
+[![Docker Automated build](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/phdax/docker-rserve/)
+
 ## Run
 ### simply
 ```
@@ -19,3 +21,6 @@ phdax/docker-rserve
 user : admin\
 pass : admin\
 port : 6312
+
+## License
+[GPL2](https://github.com/phdax/docker-rserve-tls-selfsigned/blob/master/LICENSE)
